@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.ssm.mapper.DepartmentDAO">
+    <select id="getAllDeparment" resultType="com.test.ssm.pojo.Department">
+      SELECT *
+      FROM department
+    </select>
+    <insert id="addDeparment" parameterType="string" >
+        INSERT INTO department(dname) VALUES (#{dname})
+    </insert>
+    <select id="getAll" resultType="com.test.ssm.pojo.Department">
+        SELECT *
+        FROM department
+    </select>
+
+</mapper>
+    

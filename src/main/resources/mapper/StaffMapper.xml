@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.ssm.mapper.StaffDAO">
+        <select id="getAllStaff" parameterType="com.test.ssm.pojo.Staff" resultType="com.test.ssm.pojo.Staff">
+           SELECT s.name ,s.sex,s.entry_date entryDate,d.dname dname,u.tname tname,s.dpt_id dptId,s.dt_id dtId
+            FROM department d INNER JOIN duties u ON d.id=u.dpt_id
+            INNER JOIN staff s ON s.id=u.id
+            <where>
+                <if test="dtId!=null">and dt_id=#{dtId}</if>
+                <if test="dptId!=null">and dpt_id=#{dptId}</if>
+                <if test="name!=null and name!=''">and name like concat('%',#{name},'%') </if>
+            </where>
+        </select>
+
+</mapper>
+    
